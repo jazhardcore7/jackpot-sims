@@ -2,11 +2,8 @@ package com.submission.myapplication
 
 import android.os.Bundle
 import android.view.View
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import com.submission.myapplication.databinding.ActivityMainBinding
 import kotlin.random.Random
 
@@ -48,7 +45,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun updateUI() {
-        binding.numberText.text = "Nomor: $currentNumber"
+        binding.numberText.text = getString(R.string.nomor, currentNumber)
         binding.oddEvenText.text = if (currentNumber % 2 == 0) "Genap" else "Ganjil"
         binding.probabilityText.text = "Probabilitas Jackpot: ${String.format("%.2f", currentProbability * 100)}%"
     }
@@ -62,6 +59,7 @@ class MainActivity : AppCompatActivity() {
             }
             .show()
     }
+
     private fun restartGame() {
         currentNumber = 0
         currentProbability = 0.01
